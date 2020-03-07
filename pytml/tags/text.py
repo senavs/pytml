@@ -1,6 +1,4 @@
-from typing import Union, List
-
-from essential.tag import Tag
+from ..essential.tag import Tag
 
 
 class H1(Tag):

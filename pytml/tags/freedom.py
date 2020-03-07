@@ -1,4 +1,4 @@
-from essential.tag import Tag
+from ..essential.tag import Tag
 
 
 class META(Tag):

@@ -1,5 +1,5 @@
-from essential.tag import Tag
-from tags.section import HTML, HEAD, BODY
+from ..essential.tag import Tag
+from ..tags.section import HTML, HEAD, BODY
 
 
 class Page:
