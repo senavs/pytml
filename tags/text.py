@@ -61,3 +61,21 @@ class TITLE(Tag):
 
     def __init__(self, inner: str, **kwargs):
         super().__init__('title', inner, True, **kwargs)
+
+
+class MARK(Tag):
+
+    def __init__(self, inner: str, **kwargs):
+        super().__init__('mark', inner, True, **kwargs)
+
+
+class SMALL(Tag):
+
+    def __init__(self, inner: str, **kwargs):
+        super().__init__('small', inner, True, **kwargs)
+
+
+class STRONG(Tag):
+
+    def __init__(self, inner: str, **kwargs):
+        super().__init__('strong', inner, True, **kwargs)
