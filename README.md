@@ -13,8 +13,7 @@ pip install pythml
 Simplest html page with pytml
 ```python
 from pytml.essential.page import Page
-from pytml.tags.text import H1, TITLE
-from pytml.tags.freedom import META
+from pytml.tags import *
 
 with Page('./index.html') as page:
     page.register('head', META('utf-8'))
