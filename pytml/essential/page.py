@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from ..essential.tag import Tag, HeadTag, BodyTag
+=======
+from ..essential.tag import Tag
+>>>>>>> 2ac40b6... Tags
 from ..tags.basic import HTML, HEAD, BODY
 
 
