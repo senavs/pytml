@@ -1,12 +1,12 @@
 from typing import Union, List
 
 
-class Tag:
+class TagMixin:
     _name = _arguments = _inner = ''
     _is_closed = False
     tag = '<{name}{arguments}>{inner}'
 
-    def __init__(self, name: str, inner: Union[str, 'Tag', List['Tag']], is_closed: bool, **kwargs):
+    def __init__(self, name: str, inner: Union[str, 'TagMixin', List['TagMixin']], is_closed: bool, **kwargs):
         self.name = name
         self.inner = inner
         self.is_close = is_closed
@@ -40,10 +40,9 @@ class Tag:
         return self._inner
 
     @inner.setter
-    def inner(self, elements: Union[str, 'Tag', List['Tag']]):
+    def inner(self, elements: Union[str, 'TagMixin', List['TagMixin']]):
         """Set inner html"""
-        inner_html = ''
-        if isinstance(elements, Tag):
+        if isinstance(elements, TagMixin):
             inner_html = elements.render()
         elif isinstance(elements, List):
             inner_html = ''.join(element.render() for element in elements)
@@ -69,3 +68,21 @@ class Tag:
 
     def __repr__(self) -> str:
         return self.render()
+
+
+class Tag(TagMixin):
+
+    def __init__(self, name: str, inner: Union[str, 'TagMixin', List['TagMixin']], is_closed: bool, id_: str = None, class_: str = None, **kwargs):
+        if id_:
+            kwargs.update({'id': id_})
+        if class_:
+            kwargs.update({'class': class_})
+        super().__init__(name, inner, is_closed, **kwargs)
+
+
+class HeadTag:
+    """Class used to Page know if this Tag it will recorded in HEAD"""
+
+
+class BodyTag:
+    """Class used to Page know if this Tag it will recorded in BODY"""
