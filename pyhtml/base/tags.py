@@ -5,7 +5,7 @@ class Tag:
     __tag_format = '<{name}{arguments}>{inner}'
     __name = __arguments = __inner = ''
 
-    def __init__(self, name: str, arguments: Union[None, dict], inner: Union[None, str, 'Tag', List['Tag']], is_closed: bool):
+    def __init__(self, name: str, inner: Union[None, str, 'Tag', List['Tag']], is_closed: bool, **arguments):
         self.name = name
         self.arguments = arguments
         self.inner = inner
@@ -29,6 +29,8 @@ class Tag:
     def arguments(self, arguments: dict):
         if arguments:
             for key, value in arguments.items():
+                if str(key).endswith('_'):
+                    key = key[:-1]
                 self.__arguments += f' {key}="{value}"'
 
     @property
@@ -50,3 +52,15 @@ class Tag:
 
     def __repr__(self):
         return self.render()
+
+
+class HeadTag(Tag):
+    """Class to identify head tags"""
+
+
+class BodyTag(Tag):
+    """Class to identify body tags"""
+
+
+class UnrecordableTag(Tag):
+    """Class to identify unrecordable tags"""
