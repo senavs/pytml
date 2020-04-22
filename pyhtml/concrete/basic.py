@@ -5,8 +5,8 @@ from pyhtml.product.tag import Tag
 
 class DOCTYPE(Tag):
 
-    def __init__(self):
-        super().__init__('!DOCTYPE html', None, None, False)
+    def __init__(self, inner: Union[Tag]):
+        super().__init__('!DOCTYPE html', None, inner, False)
 
 
 class HTML(Tag):
