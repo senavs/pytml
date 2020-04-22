@@ -1,4 +1,4 @@
-from pyhtml.base.tags import Tag, BodyTag
+from pyhtml.base.tags import BodyTag
 
 
 class IFRAME(BodyTag):

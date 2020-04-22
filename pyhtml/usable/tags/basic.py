@@ -77,7 +77,7 @@ class H6(BodyTag):
 
 class P(BodyTag):
 
-    def __init__(self, inner: Union[str], **arguments):
+    def __init__(self, inner: Union[str, Tag, List['Tag']], **arguments):
         super().__init__('p', inner, True, **arguments)
 
 
