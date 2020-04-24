@@ -1,6 +1,8 @@
-from pyhtml.base.tags import BodyTag
+from ...base.tags import BodyTag
+from ...base.register import Register
 
 
+@Register
 class IFRAME(BodyTag):
 
     def __init__(self, **arguments):

@@ -1,6 +1,6 @@
-from pyhtml.base.dom import DOM
-from pyhtml.base.tags import Tag, HeadTag, BodyTag
-from pyhtml.base.exception import TagNotRecordable
+from ..base.dom import DOM
+from ..base.tags import Tag, HeadTag, BodyTag
+from ..base.exception import TagNotRecordable
 
 
 class Page(DOM):
