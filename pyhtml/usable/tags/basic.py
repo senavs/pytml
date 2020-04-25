@@ -4,21 +4,18 @@ from ...base.tags import Tag, HeadTag, BodyTag, UnrecordableTag
 from ...base.register import Register
 
 
-@Register
 class DOCTYPE(UnrecordableTag):
 
     def __init__(self, inner: Union[Tag]):
         super().__init__('!DOCTYPE html', inner, False)
 
 
-@Register
 class HTML(UnrecordableTag):
 
     def __init__(self, inner: Union['Tag', List['Tag']]):
         super().__init__('html', inner, True)
 
 
-@Register
 class HEAD(UnrecordableTag):
 
     def __init__(self, inner: Union['Tag', List['Tag']]):
@@ -39,7 +36,6 @@ class META(HeadTag):
         super().__init__('title', None, True, **arguments)
 
 
-@Register
 class BODY(UnrecordableTag):
 
     def __init__(self, inner: Union[str, 'Tag', List['Tag']], **arguments):
