@@ -1,5 +1,5 @@
-from pyhtml.base.tags import Tag
-from pyhtml.usable.tags.basic import DOCTYPE, HTML, HEAD, BODY
+from ..base.tags import Tag
+from ..usable.tags.basic import DOCTYPE, HTML, HEAD, BODY
 
 
 class DOM:
