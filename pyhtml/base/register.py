@@ -2,7 +2,7 @@ class Register:
     __register_tags = {}
 
     def __new__(cls, other: object):
-        cls.__register_tags[other.__name__.lower()] = cls
+        cls.__register_tags[other.__name__.lower()] = other
         return other
 
     @classmethod
