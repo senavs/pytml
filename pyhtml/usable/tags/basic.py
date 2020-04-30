@@ -33,7 +33,7 @@ class TITLE(HeadTag):
 class META(HeadTag):
 
     def __init__(self, **arguments):
-        super().__init__('title', None, True, **arguments)
+        super().__init__('meta', None, True, **arguments)
 
 
 class BODY(UnrecordableTag):

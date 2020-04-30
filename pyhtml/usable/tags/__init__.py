@@ -7,3 +7,5 @@ from ...usable.tags.frames import IFRAME
 from ...usable.tags.list import UL, OL, LI, DL, DT, DD
 from ...usable.tags.styles_semantics import (STYLE, DIV, SPAN, HEADER, FOOTER, MAIN, SECTION, ARTICLE, ASIDE, DETAILS,
                                              DIALOG, SUMMARY, DATA)
+from ...usable.tags.link import LINK, A, NAV
+from ...usable.tags.programming import SCRIPT
