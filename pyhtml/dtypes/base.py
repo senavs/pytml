@@ -3,37 +3,41 @@ from typing import Union, List
 
 class Element:
     _element_fmr = '{inner}'
+    _loaded = False
     __inner = ''
-
-    def __init__(self, inner: Union[str, 'Element', List['Element']]):
-        self.inner = inner
 
     @property
     def inner(self):
         return self.__inner
 
     @inner.setter
-    def inner(self, elements: Union[str, 'Element', List['Element']]):
-        if isinstance(elements, Element):
-            self.__inner = elements.render()
-        if isinstance(elements, List):
-            self.__inner = ''.join(element.render() for element in elements)
+    def inner(self, elements: Union[None, str, 'Element', List['Element']]):
+        if elements:
+            if isinstance(elements, Element):
+                self.__inner = elements.compile()
+            if isinstance(elements, List):
+                self.__inner = ''.join(elements)
+            else:
+                self.__inner = elements
         else:
-            self.__inner = elements
+            self.__inner = ''
 
-    def render(self) -> str:
-        return self._element_fmr.format(inner=self.inner)
+    def compile(self) -> str:
+        if self._loaded:
+            return self._element_fmr.format(inner=self.inner)
+        raise RuntimeError('Element was not loaded yet')
 
-    def __str__(self):
-        return self.render()
+    def __call__(self, inner: Union[None, str, 'Element', List['Element']] = None):
+        self.inner = inner
+        self._loaded = True
+        return self.compile()
 
 
 class Tag(Element):
     _element_fmr = '<{name}{attributes}>{inner}'
     __name = __attributes = ''
 
-    def __init__(self, name: str, inner: Union[str, 'Element', List['Element']], is_closed: bool, **kwargs):
-        super().__init__(inner)
+    def __init__(self, name: str, is_closed: bool, **kwargs):
         if is_closed:
             self._element_fmr += '</{name}>'
 
@@ -60,5 +64,25 @@ class Tag(Element):
                     key = key[:-1]
                 self.__attributes += f' {key}="{value}"'
 
-    def render(self) -> str:
-        return self._element_fmr.format(name=self.name, attributes=self.attributes, inner=self.inner)
+    def compile(self) -> str:
+        if self._loaded:
+            return self._element_fmr.format(name=self.name, attributes=self.attributes, inner=self.inner)
+        raise RuntimeError('Element was not loaded yet')
+
+    def __call__(self, inner: Union[None, str, 'Element', List['Element']] = None, **kwargs):
+        self.inner = inner
+        self.attributes = kwargs
+        self._loaded = True
+        return self.compile()
+
+
+class HeadTag(Tag):
+    """Class to identify head tags"""
+
+
+class BodyTag(Tag):
+    """Class to identify body tags"""
+
+
+class NotRecordableTag(Tag):
+    """Class to identify not recordable tags"""
