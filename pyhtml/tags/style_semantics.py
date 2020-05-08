@@ -1,0 +1,15 @@
+from ..dtypes.factory import BaseFactory
+
+STYLE = BaseFactory.create_head_tag_class('style', True)
+DIV = BaseFactory.create_body_tag_class('div', True)
+SPAN = BaseFactory.create_body_tag_class('span', True)
+HEADER = BaseFactory.create_body_tag_class('header', True)
+FOOTER = BaseFactory.create_body_tag_class('footer', True)
+MAIN = BaseFactory.create_body_tag_class('main', True)
+SECTION = BaseFactory.create_body_tag_class('section', True)
+ARTICLE = BaseFactory.create_body_tag_class('article', True)
+ASIDE = BaseFactory.create_body_tag_class('aside', True)
+DETAILS = BaseFactory.create_body_tag_class('details', True)
+DIALOG = BaseFactory.create_body_tag_class('dialog', True)
+SUMMARY = BaseFactory.create_body_tag_class('summary', True)
+DATA = BaseFactory.create_body_tag_class('data', True)
