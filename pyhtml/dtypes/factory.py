@@ -1,3 +1,5 @@
+from typing import Union, Tuple, Dict
+
 from ..dtypes.base import Element, HeadTag, BodyTag, NotRecordableTag
 
 

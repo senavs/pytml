@@ -63,6 +63,8 @@ class Tag(Element):
                 if str(key).endswith('_'):
                     key = key[:-1]
                 self.__attributes += f' {key}="{value}"'
+        else:
+            self.__attributes = ''
 
     def compile(self) -> str:
         if self._loaded:
@@ -86,3 +88,7 @@ class BodyTag(Tag):
 
 class NotRecordableTag(Tag):
     """Class to identify not recordable tags"""
+
+
+class Component(Element):
+    """Class to identify components"""
