@@ -3,6 +3,7 @@ from typing import Union, Tuple, Dict
 from ..dtypes.base import Component
 from ..tags.link import LINK
 from ..tags.programming import SCRIPT_HEAD
+from ..tags.list import OL, UL, LI
 
 
 class Bootstrap4(Component):
@@ -24,3 +25,30 @@ class Bootstrap4(Component):
         self._loaded = True
         return self.compile()
 
+
+class OrderedList(Component):
+
+    def __call__(self, *args: Union[str, Tuple[str, Dict]], **kwargs):
+        list_items = []
+        for list_item in args:
+            if isinstance(list_item, str):
+                list_items.append(LI(list_item))
+            else:
+                list_items.append(LI(list_item[0], **list_item[1]))
+        self.inner = OL(list_items, **kwargs)
+        self._loaded = True
+        return self.compile()
+
+
+class UnorderedList(Component):
+
+    def __call__(self, *args: Union[str, Tuple[str, Dict]], **kwargs):
+        list_items = []
+        for list_item in args:
+            if isinstance(list_item, str):
+                list_items.append(LI(list_item))
+            else:
+                list_items.append(LI(list_item[0], **list_item[1]))
+        self.inner = UL(list_items, **kwargs)
+        self._loaded = True
+        return self.compile()

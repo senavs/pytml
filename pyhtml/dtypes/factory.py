@@ -20,3 +20,21 @@ class BaseFactory:
     @staticmethod
     def create_not_recordable_tag_class(name: str, is_closed: bool):
         return NotRecordableTag(name, is_closed)
+
+
+from .components import Bootstrap4, OrderedList, UnorderedList
+
+
+class ComponentFactory:
+
+    @staticmethod
+    def create_bootstrap4_component():
+        return Bootstrap4()
+
+    @staticmethod
+    def create_ordered_list():
+        return OrderedList()
+
+    @staticmethod
+    def create_unordered_list():
+        return UnorderedList()
