@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import Union, MutableSequence
 
 
@@ -102,31 +101,18 @@ class BodyTag(BaseTag, BaseBodyLocation):
     pass
 
 
-class TagTypeEnum(Enum):
-    UNALLOCATED = UnallocatedTag
-    HEAD = HeadTag
-    BODY = BodyTag
-
-
-class ComponentMeta(type):
-
-    def __new__(mcs, name: str, bases: tuple, attributes: dict):
-        elements = attributes.get('ELEMENTS')
-        if elements:
-            attributes.update(_inner=BaseElement.set_inner(elements))
-
-        return type(name, bases, attributes)
-
-
-class ComponentHead(BaseElement, BaseHeadLocation, metaclass=ComponentMeta):
+class BaseComponent(BaseElement):
     ELEMENTS = []
 
     def __call__(self, *args, **kwargs):
+        if self.ELEMENTS:
+            self._inner = self.set_inner(self.ELEMENTS)
         return self
 
 
-class ComponentBody(BaseElement, BaseBodyLocation, metaclass=ComponentMeta):
-    ELEMENTS = []
+class ComponentHead(BaseComponent, BaseHeadLocation):
+    pass
 
-    def __call__(self, *args, **kwargs):
-        return self
+
+class ComponentBody(BaseComponent, BaseBodyLocation):
+    pass
