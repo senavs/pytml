@@ -3,8 +3,15 @@ from pyhtml.usable.tags import HTML, HEAD, BODY
 
 
 class Page:
+    """Classe DOM"""
 
     def __init__(self, file_path: str):
+        """Contrutor
+
+        :param file_path: diretório onde será salvo o arquivo HTML
+            :type: str
+        """
+
         self.file_path = file_path
         self.file = None
         self._head_elements = []
@@ -23,6 +30,12 @@ class Page:
         self.file.close()
 
     def register(self, element: BaseElement):
+        """Registar tag ou componente da página HTML
+
+        :param element: tag ou elemento a ser registrado
+            :type: 'BaseElement'
+        """
+
         if isinstance(element, BaseHeadLocation):
             self._head_elements.append(element)
         elif isinstance(element, BaseBodyLocation):

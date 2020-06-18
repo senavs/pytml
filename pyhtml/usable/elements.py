@@ -1,3 +1,3 @@
-from pyhtml.dtype.facotry import Factory
+from pyhtml.dtype.base import ComponentBody
 
-TEXT = Factory.create_element()
+TEXT = ComponentBody()

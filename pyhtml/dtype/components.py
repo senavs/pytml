@@ -3,6 +3,8 @@ from pyhtml.usable.tags import LINK_HEAD, SCRIPT_HEAD, OL, UL, LI
 
 
 class Bootstrap4(ComponentHead):
+    """Componente BOOTSTRAP4"""
+
     ELEMENTS = [LINK_HEAD(rel='stylesheet',
                           href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
                           integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',
@@ -19,6 +21,7 @@ class Bootstrap4(ComponentHead):
 
 
 class OrderedList(ComponentBody):
+    """Componente para criar lista ordenada"""
 
     def __call__(self, *args, **kwargs):
         elements = []
@@ -29,6 +32,7 @@ class OrderedList(ComponentBody):
 
 
 class UnorderedList(ComponentBody):
+    """Componente para criar lista não ordenada"""
 
     def __call__(self, *args, **kwargs):
         elements = []
